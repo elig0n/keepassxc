@@ -53,7 +53,7 @@ Database::Database()
 
     s_uuidMap.insert(m_uuid, this);
 
-    connect(m_metadata, SIGNAL(metadataModified()), this, SLOT(markAsModified()));
+    connect(m_metadata, SIGNAL(metadataModified()), SLOT(markAsModified()));
     connect(m_timer, SIGNAL(timeout()), SIGNAL(databaseModified()));
     connect(this, SIGNAL(databaseOpened()), SLOT(updateCommonUsernames()));
     connect(this, SIGNAL(databaseSaved()), SLOT(updateCommonUsernames()));

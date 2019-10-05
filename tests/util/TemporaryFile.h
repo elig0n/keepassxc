@@ -34,17 +34,19 @@ class TemporaryFile : public QTemporaryFile
 {
     Q_OBJECT
 
-#ifdef Q_OS_WIN
 public:
+#ifdef Q_OS_WIN
     TemporaryFile();
     explicit TemporaryFile(const QString& templateName);
     explicit TemporaryFile(QObject* parent);
     TemporaryFile(const QString& templateName, QObject* parent);
-    ~TemporaryFile() override = default;
+    ~TemporaryFile() override;
 
     using QFile::open;
     bool open();
 #endif
+
+    bool copyFromFile(const QString& otherFileName);
 };
 
 #endif // KEEPASSXC_TEMPORARYFILE_H
